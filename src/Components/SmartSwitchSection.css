@@ -13,10 +13,6 @@
   margin-bottom: 20px;
 }
 
-.iframe-pointer-blocked {
-  pointer-events: none;
-}
-
 .giphy-embed {
   max-width: 100%;
 }

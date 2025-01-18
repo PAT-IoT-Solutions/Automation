@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./SmartSwitchSection.css";
 import smartSwitchImage from "../images/smart-switch.png";
 const SmartSwitchSection = () => {
+  const iframeContainer = useRef(null);
+
+  useEffect(() => {
+    if (iframeContainer.current) {
+      iframeContainer.current.style.pointerEvents = "none";
+    }
+  }, []);
   return (
     <section className="smart_switch_section">
       <div className="container">
         <div className="iframe_section">
-          <iframe
-            src="https://giphy.com/embed/WTu5YH9J0kyVtymRIe"
+          <img
+            src="https://media.giphy.com/media/WTu5YH9J0kyVtymRIe/giphy.gif"
+            alt="Smart Switch Animation"
             width="480"
             height="269"
-            className="giphy-embed iframe-pointer-blocked"
-            title="wifi"
-          ></iframe>
+            className="responsive-image"
+          />
         </div>
         <div className="row">
           <div className="col">
