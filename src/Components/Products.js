@@ -54,6 +54,7 @@ const ServiceBox = ({ imgSrc, title, description }) => {
         </div>
       </div>
     </div>
+    
   );
 };
 
