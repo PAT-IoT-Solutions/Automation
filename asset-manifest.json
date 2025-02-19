@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ab43747a.css",
-    "main.js": "/static/js/main.942bef1a.js",
+    "main.css": "/static/css/main.117597f1.css",
+    "main.js": "/static/js/main.14317820.js",
     "static/js/787.270d7a4d.chunk.js": "/static/js/787.270d7a4d.chunk.js",
     "static/media/video4.mp4": "/static/media/video4.a0334e68bef32acce990.mp4",
     "static/media/side-view-hand-with-smartphone-smart-light.jpg": "/static/media/side-view-hand-with-smartphone-smart-light.2f6b38891b1502d5a9cd.jpg",
@@ -26,12 +26,12 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "index.html": "/index.html",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
-    "main.ab43747a.css.map": "/static/css/main.ab43747a.css.map",
-    "main.942bef1a.js.map": "/static/js/main.942bef1a.js.map",
+    "main.117597f1.css.map": "/static/css/main.117597f1.css.map",
+    "main.14317820.js.map": "/static/js/main.14317820.js.map",
     "787.270d7a4d.chunk.js.map": "/static/js/787.270d7a4d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ab43747a.css",
-    "static/js/main.942bef1a.js"
+    "static/css/main.117597f1.css",
+    "static/js/main.14317820.js"
   ]
 }
