@@ -16,6 +16,7 @@ import HowItWorks from "./Components/HowItWorks";
 import Video from "./Components/Video";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import AboutCompany from "./Components/AboutCompany";
+import { Privacypolicy } from "./Components/Privacypolicy";
 
 Modal.setAppElement("#root");
 
@@ -52,6 +53,7 @@ function App() {
           />
 
           <Route path="/aboutcompany" element={<AboutCompany />} />
+          <Route path="/privacy-policy" element={<Privacypolicy />} />
         </Routes>
       </div>
     </Router>

@@ -1,96 +1,152 @@
-import React, { useRef } from "react";
-import "./Contact.css";
+import React, { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import emailjs from "@emailjs/browser";
+import "./Contact.css";
+import {
+  FaPaperPlane,
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
-const ContactSection = () => {
-  const form = useRef();
+const ContactForm = () => {
+  const formRef = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Function to send email
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    const formData = new FormData(form.current);
-    const fromName = formData.get("from_name");
-    const email = formData.get("from_email");
-    const message = formData.get("message");
+    try {
+      const formData = new FormData(formRef.current);
+      const fromName = formData.get("from_name");
+      const phone = formData.get("phone");
+      const email = formData.get("from_email");
+      const message = formData.get("message");
 
-    if (!fromName || !email || !message) {
-      toast.error("Please fill out all required fields.");
-      return;
-    }
+      if (!fromName || !phone || !email || !message) {
+        throw new Error("Please fill out all required fields");
+      }
 
-    emailjs
-      .sendForm("service_5z3p4q1", "template_w1ejqkw", form.current, {
-        publicKey: "8hMqKfWh1Q_BkPeUt",
-      })
-      .then(
-        () => {
-          console.log("Email sent successfully!");
-          toast.success("Your message has been sent successfully!");
-          form.current.reset();
-        },
-        (error) => {
-          console.log("Error in sending email:", error.text);
-          toast.error("Failed to send message. Please try again.");
-        }
+      await emailjs.sendForm(
+        "service_5z3p4q1",
+        "template_w1ejqkw",
+        formRef.current,
+        "8hMqKfWh1Q_BkPeUt"
       );
+
+      toast.success("Your message has been sent successfully!");
+      formRef.current.reset();
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(error.message || "Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="contact_section">
-      <div className="container">
-        <div className="row">
-          <div data-aos="flip-left" className="col-md-7 col-lg-6">
-            <div className="form_container">
-              <div className="heading_container">
-                <h2>Contact Us</h2>
+    <section id="contact" className="cf-container">
+      <div className="cf-inner">
+        <div className="cf-header">
+          <h2 className="cf-title">
+            Get In <span style={{ color: " #2563eb" }}>Touch</span>
+          </h2>
+          <p className="cf-subtitle">We'd love to hear from you</p>
+        </div>
+
+        <div className="cf-content">
+          <div className="cf-form-wrapper">
+            <form ref={formRef} onSubmit={sendEmail} className="cf-form">
+              <div className="cf-form-group">
+                <input
+                  type="text"
+                  name="from_name"
+                  placeholder="Your Name"
+                  className="cf-input"
+                  required
+                />
               </div>
-              <form ref={form} onSubmit={sendEmail}>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    name="from_name"
-                    required
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Phone Number"
-                    name="ph_no"
-                    required
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    name="from_email"
-                    required
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    className="message-box"
-                    placeholder="Message"
-                    name="message"
-                    required
-                  />
-                </div>
-                <div className="btn_box">
-                  <button type="submit">SEND</button>
-                </div>
-              </form>
+              <div className="cf-form-group">
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  className="cf-input"
+                  required
+                />
+              </div>
+              <div className="cf-form-group">
+                <input
+                  type="email"
+                  name="from_email"
+                  placeholder="Email Address"
+                  className="cf-input"
+                  required
+                />
+              </div>
+              <div className="cf-form-group">
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  className="cf-textarea"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="cf-submit-btn"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    <FaPaperPlane className="cf-submit-icon" />
+                    Send Message
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+
+          <div className="cf-info-section">
+            <div className="cf-info-card">
+              <div className="cf-info-icon">
+                <FaPhone />
+              </div>
+              <div className="cf-info-content">
+                <h3>Phone</h3>
+                <p>+91 90309 83040</p>
+              </div>
+            </div>
+            <div className="cf-info-card">
+              <div className="cf-info-icon">
+                <FaEnvelope />
+              </div>
+              <div className="cf-info-content">
+                <h3>Email</h3>
+                <p>bharath.patiot@gmail.com</p>
+              </div>
+            </div>
+            <div className="cf-info-card">
+              <div className="cf-info-icon">
+                <FaMapMarkerAlt />
+              </div>
+              <div className="cf-info-content">
+                <h3>Address</h3>
+                <p>
+                  D-2, 3rd Floor, CMC Layout, Pearl Village Rd, Kondapur,
+                  Hyderabad, Telangana – 500084
+                </p>
+              </div>
             </div>
           </div>
-          <div className="col-md-5 col-lg-6"></div>
         </div>
       </div>
     </section>
   );
 };
 
-export default ContactSection;
+export default ContactForm;

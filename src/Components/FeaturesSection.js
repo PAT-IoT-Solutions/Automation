@@ -3,69 +3,84 @@ import "./FeaturesSection.css";
 
 const features = [
   {
-    title: "Accessibility",
-    description: "Control all your appliances from anywhere in the world.",
-    icon: "fa-globe",
+    title: "Remote Access",
+    description: "Control appliances from anywhere via our mobile app",
+    icon: "fa-mobile-alt",
+    highlight: "Popular",
   },
   {
-    title: "Scheduling",
-    description:
-      "Schedule your appliances like geysers and ACs for efficiency.",
-    icon: "fa-calendar-alt",
+    title: "Energy Scheduling",
+    description: "Automate geysers & ACs to reduce electricity bills",
+    icon: "fa-bolt",
+    highlight: "Save 30%+",
   },
   {
-    title: "Security",
-    description: "Receive instant intrusion alerts to keep your home safe.",
-    icon: "fa-shield-alt",
+    title: "Intrusion Alerts",
+    description: "Instant notifications for unauthorized access",
+    icon: "fa-bell",
+    highlight: "Security",
   },
   {
-    title: "User-friendly Setup",
-    description: "Syncs with existing switches without additional wiring.",
-    icon: "fa-tools",
+    title: "No Rewiring",
+    description: "Works with existing switches - no extra wiring needed",
+    icon: "fa-plug",
+    highlight: "Easy Setup",
   },
   {
-    title: "Multi-access",
-    description:
-      "Multiple users can control appliances with real-time updates.",
+    title: "Multi-User Control",
+    description: "Share access with family members seamlessly",
     icon: "fa-users",
+    highlight: "Family",
   },
   {
-    title: "Scenes",
-    description: "Control a set of appliances at once with a single click.",
-    icon: "fa-th-large",
+    title: "Scene Presets",
+    description: "One-touch control for multiple devices",
+    icon: "fa-sliders-h",
+    highlight: "Smart",
   },
   {
-    title: "Voice Control with Alexa",
-    description: "Use voice commands via Alexa to control appliances easily.",
+    title: "Voice Commands",
+    description: "Works with Alexa & Google Assistant",
     icon: "fa-microphone",
+    highlight: "Hands-Free",
   },
   {
-    title: "2-Years Warranty",
-    description: "Enjoy peace of mind with a comprehensive 2-years warranty.",
-    icon: "fa-shield",
-  },
-  {
-    icon: "fa fa-plug",
-    title: "Easy Installation",
-    description: "Set up your device in a few simple steps with no hassle!",
+    title: "Warranty",
+    description: "24 months comprehensive device coverage",
+    icon: "fa-shield-alt",
+    highlight: "Reliable",
   },
 ];
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="features_section">
+    <section id="features" className="features-section">
       <div className="container">
-        <h2 className="section_title">
-          <strong>Our Key Features</strong>
-        </h2>
-        <div className="features_grid">
+        <div className="section-header" data-aos="fade-up">
+          <h2 className="section-title">
+            Smart Home <span>Features</span>
+          </h2>
+          <p className="section-subtitle">
+            Transform your living space with our advanced IoT solutions
+          </p>
+        </div>
+
+        <div className="features-grid">
           {features.map((feature, index) => (
-            <div className="feature_card" data-aos="zoom-in" key={index}>
-              <div className="icon_container">
-                <i className={`fa ${feature.icon}`} aria-hidden="true"></i>
+            <div
+              className="feature-card"
+              key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              {feature.highlight && (
+                <div className="feature-badge">{feature.highlight}</div>
+              )}
+              <div className="feature-icon">
+                <i className={`fa ${feature.icon}`} />
               </div>
-              <h4 className="feature_title">{feature.title}</h4>
-              <p className="feature_description">{feature.description}</p>
+              <h3 className="feature-title">{feature.title}</h3>
+              <p className="feature-description">{feature.description}</p>
             </div>
           ))}
         </div>

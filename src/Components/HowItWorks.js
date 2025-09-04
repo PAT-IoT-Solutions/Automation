@@ -1,45 +1,76 @@
 import React from "react";
 import "./howItWorks.css";
-import "./responsive.css";
 import wifiModuleImage from "../images/work1.png";
 import cloudServerImage from "../images/work2.png";
 import appControlImage from "../images/work3.png";
+import { FaNetworkWired, FaCloud, FaMobileScreen } from "react-icons/fa6";
 
-const tiles = [
-  {
-    image: wifiModuleImage,
-    alt: "WiFi Module",
-    description:
-      "Smart switch with WiFi module connects to a cloud server via your home Wi-Fi network.",
-  },
-  {
-    image: cloudServerImage,
-    alt: "Cloud Server",
-    description:
-      "The cloud server acts as a bridge, enabling remote communication between the switch and the mobile app.",
-  },
-  {
-    image: appControlImage,
-    alt: "App Control",
-    description:
-      "Users can access and control the switch from anywhere via the mobile app.",
-  },
-];
+const SmartSwitchWorkflow = () => {
+  const workflowSteps = [
+    {
+      icon: <FaNetworkWired className="sws-stepVisual" />,
+      image: wifiModuleImage,
+      heading: "Device Connection",
+      details: "Smart switches connect securely to your home WiFi network",
+      accentColor: "#4F46E5", // Indigo
+    },
+    {
+      icon: <FaCloud className="sws-stepVisual" />,
+      image: cloudServerImage,
+      heading: "Cloud Sync",
+      details: "Encrypted communication with our secure cloud servers",
+      accentColor: "#10B981", // Emerald
+    },
+    {
+      icon: <FaMobileScreen className="sws-stepVisual" />,
+      image: appControlImage,
+      heading: "App Control",
+      details: "Manage devices from anywhere via our intuitive mobile app",
+      accentColor: "#EC4899", // Pink
+    },
+  ];
 
-const HowItWorks = () => (
-  <section className="how_it_works_section">
-    <div className="container">
-      <h2 className="section_title">How It Works</h2>
-      <div className="tiles_row">
-        {tiles.map((tile, index) => (
-          <div className="tile" data-aos="zoom-in" key={index}>
-            <img src={tile.image} alt={tile.alt} className="tile_image" />
-            <p className="tile_description">{tile.description}</p>
-          </div>
-        ))}
+  return (
+    <section className="sws-container" id="product-workflow">
+      <div className="sws-inner">
+        <header className="sws-header">
+          <h2 className="sws-mainHeading">
+            System <span>Workflow</span>
+          </h2>
+          <p className="sws-subHeading">
+            Seamless integration from device to cloud to your fingertips
+          </p>
+        </header>
+
+        <div className="sws-stepsGrid">
+          {workflowSteps.map((step, index) => (
+            <article
+              className="sws-stepCard"
+              key={`step-${index}`}
+              style={{ "--step-accent": step.accentColor }}
+            >
+              <span className="sws-stepIndex">0{index + 1}</span>
+              <div className="sws-stepIconWrapper">{step.icon}</div>
+              <figure className="sws-stepImageFrame">
+                <img
+                  src={step.image}
+                  alt={step.heading}
+                  className="sws-stepImage"
+                  loading="lazy"
+                  width={280}
+                  height={180}
+                />
+              </figure>
+              <div className="sws-stepContent">
+                <h3 className="sws-stepTitle">{step.heading}</h3>
+                <p className="sws-stepDesc">{step.details}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
-export default HowItWorks;
+export default SmartSwitchWorkflow;

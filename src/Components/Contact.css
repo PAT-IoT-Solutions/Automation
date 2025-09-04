@@ -1,149 +1,209 @@
-.contact_section {
-  position: relative;
+/* ===== Variables ===== */
+:root {
+  --cf-bg: #ffffff;
+  --cf-card-bg: #f8f9fa;
+  --cf-accent: #2563eb;
+  --cf-text: #1e293b;
+  --cf-text-light: #64748b;
+  --cf-border: #e2e8f0;
+  --cf-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --cf-transition: all 0.2s ease;
 }
 
-.contact_section .row {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+/* ===== Base Styles ===== */
+.cf-container {
+  padding: 5rem 0;
+  background-color: var(--cf-bg);
 }
 
-.contact_section .form_container {
-  background-color: #3a3f58;
-  padding: 45px;
-  margin-bottom: -90px;
-  border: 5px solid #ffffff;
-  color: #ffffff;
+.cf-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.contact_section .form_container .heading_container {
-  margin-bottom: 30px;
+/* ===== Header Styles ===== */
+.cf-header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-.contact_section .form_container input {
-  width: 100%;
-  border: none;
-  height: 50px;
-  margin-bottom: 25px;
-  padding-left: 15px;
-  outline: none;
-  color: #101010;
-  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05);
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05);
-  border-radius: 5px;
+.cf-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--cf-text);
+  margin-bottom: 0.5rem;
 }
 
-.contact_section .form_container input::-webkit-input-placeholder {
-  color: #333;
+.cf-subtitle {
+  font-size: 1.125rem;
+  color: var(--cf-text-light);
 }
 
-.contact_section .form_container input:-ms-input-placeholder {
-  color: #333;
+/* ===== Content Layout ===== */
+.cf-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
 }
 
-.contact_section .form_container input::-ms-input-placeholder {
-  color: #333;
+/* ===== Form Styles ===== */
+.cf-form-wrapper {
+  background: var(--cf-card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--cf-shadow);
 }
 
-.contact_section .form_container input::placeholder {
-  color: #333;
-}
-
-.contact_section .form_container input.message-box {
-  height: 120px;
-}
-
-.contact_section .form_container .btn_box {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.cf-form {
   display: flex;
-  margin-top: 15px;
-}
-
-.contact_section .form_container button {
-  border: none;
-  text-transform: uppercase;
-  display: inline-block;
-  padding: 12px 55px;
-  background-color: #e45441;
-  color: #ffffff;
-  border-radius: 0px;
-  border: 1px solid #e45441;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-}
-
-.contact_section .form_container button:hover {
-  background-color: transparent;
-  color: #e45441;
-}
-
-.contact_section .subscribe-box h3 {
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.contact_section .subscribe-box p {
-  color: #777;
-}
-
-.contact_section .subscribe-box form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
+  gap: 1.25rem;
+}
+
+.cf-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.cf-input,
+.cf-textarea {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--cf-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--cf-transition);
+  background: white;
+}
+
+.cf-input:focus,
+.cf-textarea:focus {
+  outline: none;
+  border-color: var(--cf-accent);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.cf-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.cf-submit-btn {
+  background: var(--cf-accent);
+  color: white;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--cf-transition);
+}
+
+.cf-submit-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.cf-submit-btn:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cf-submit-icon {
+  font-size: 0.875rem;
+}
+
+/* ===== Info Section ===== */
+.cf-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cf-info-card {
+  background: var(--cf-card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--cf-shadow);
+  display: flex;
   align-items: flex-start;
+  gap: 1rem;
+  transition: var(--cf-transition);
 }
 
-.contact_section .subscribe-box form input {
-  background-color: #ccc;
-  height: 50px;
-  padding-left: 15px;
-  outline: none;
-  color: #ffffff;
-  border: none;
-  width: 100%;
-  margin-bottom: 15px;
+.cf-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.contact_section .subscribe-box form input::-webkit-input-placeholder {
-  color: #555;
+.cf-info-icon {
+  background: rgba(37, 99, 235, 0.1);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cf-accent);
+  font-size: 1.25rem;
+  flex-shrink: 0;
 }
 
-.contact_section .subscribe-box form input:-ms-input-placeholder {
-  color: #555;
+.cf-info-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--cf-text);
+  margin-bottom: 0.25rem;
+  text-align: left;
 }
 
-.contact_section .subscribe-box form input::-ms-input-placeholder {
-  color: #555;
+.cf-info-content p {
+  color: var(--cf-text-light);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-align: left;
 }
 
-.contact_section .subscribe-box form input::placeholder {
-  color: #555;
+/* ===== Responsive Design ===== */
+@media (max-width: 992px) {
+  .cf-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .cf-info-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
-.contact_section .subscribe-box form button {
-  background-color: transparent;
-  color: #3a3f58;
-  text-transform: uppercase;
-  outline: none;
-  border: none;
-  display: inline-block;
-  padding: 10px 45px;
-  background-color: #3a3f58;
-  color: #ffffff;
-  border-radius: 0;
-  border: 1px solid #3a3f58;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+@media (max-width: 768px) {
+  .cf-container {
+    padding: 3rem 0;
+  }
+
+  .cf-title {
+    font-size: 2rem;
+  }
+
+  .cf-info-section {
+    flex-direction: column;
+  }
 }
 
-.contact_section .subscribe-box form button:hover {
-  background-color: transparent;
-  color: #3a3f58;
+@media (max-width: 480px) {
+  .cf-inner {
+    padding: 0 1rem;
+  }
+
+  .cf-form-wrapper {
+    padding: 1.5rem;
+  }
 }

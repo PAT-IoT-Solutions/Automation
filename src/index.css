@@ -13,3 +13,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* styles.css */
+/* Privacy Policy Styling */
+
+.privacy {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 80px;
+  margin-top: 40px;
+}

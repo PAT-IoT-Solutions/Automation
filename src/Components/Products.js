@@ -1,39 +1,71 @@
 import React from "react";
-import s1 from "../images/curtain-switch.png";
-import s2 from "../images/motion-sensor-product.jpg";
-import s3 from "../images/ir.jpg";
+import curtainSwitch from "../images/curtain-switch-removebg-preview.png";
+import motionSensor from "../images/motion-sensor-product-removebg-preview.png";
+import irBlaster from "../images/ir-removebg-preview.png";
 import "./Products.css";
-const Products = () => {
-  const services = [
+
+const SmartHomeProducts = () => {
+  const productList = [
     {
-      imgSrc: s1,
+      image: curtainSwitch,
       title: "Curtain Controller Switch",
       description:
-        "Control curtains via mobile app, voice commands, scheduled timings, or manually with the curtain controller switch",
+        "Control curtains via mobile app, voice commands, scheduled timings, or manual switch operation",
+      features: [
+        "App control",
+        "Voice commands",
+        "Scheduling",
+        "Manual override",
+      ],
     },
     {
-      imgSrc: s2,
+      image: motionSensor,
       title: "Motion Sensor",
       description:
-        "Automatically turns lights on/off based on movement, ideal for saving energy in corridors and washrooms",
+        "Automatically manages lighting based on movement detection for energy efficiency",
+      features: [
+        "Auto on/off",
+        "Energy saving",
+        "Adjustable sensitivity",
+        "Discreet design",
+      ],
     },
     {
-      imgSrc: s3,
-      title: "IR-Blaster",
+      image: irBlaster,
+      title: "IR Blaster",
       description:
-        "TVs, ACs, and other infrared devices effortlessly using an app or voice commands",
+        "Control TVs, ACs, and other infrared devices with your smartphone or voice",
+      features: [
+        "Universal remote",
+        "App integration",
+        "Voice control",
+        "Scene creation",
+      ],
     },
   ];
 
   return (
-    <section id="products" className="service_section layout_padding">
-      <div className="container">
-        <div className="heading_container heading_center">
-          <h2>Products</h2>
-        </div>
-        <div className="row">
-          {services.map((service, index) => (
-            <ServiceBox key={index} {...service} />
+    <section id="smart-products" className="shp-section">
+      <div className="shp-container">
+        <header className="shp-header">
+          <h2 className="shp-main-title">
+            Our <span>Smart Products</span>
+          </h2>
+          <p className="shp-subtitle">
+            Innovative solutions for modern home automation
+          </p>
+        </header>
+
+        <div className="shp-grid">
+          {productList.map((product, index) => (
+            <ProductCard
+              key={`product-${index}`}
+              image={product.image}
+              title={product.title}
+              description={product.description}
+              features={product.features}
+              index={index}
+            />
           ))}
         </div>
       </div>
@@ -41,21 +73,37 @@ const Products = () => {
   );
 };
 
-const ServiceBox = ({ imgSrc, title, description }) => {
+const ProductCard = ({ image, title, description, features, index }) => {
   return (
-    <div to="products" className="col-md-6 col-lg-4 mx-auto">
-      <div data-aos="zoom-in" className="box">
-        <div className="img-box">
-          <img src={imgSrc} alt="" />
-        </div>
-        <div className="detail-box">
-          <h5>{title}</h5>
-          <p>{description}</p>
-        </div>
+    <article
+      className="shp-product-card"
+      data-aos="fade-up"
+      data-aos-delay={index * 100}
+    >
+      <div className="shp-image-container">
+        <img
+          src={image}
+          alt={title}
+          className="shp-product-image"
+          loading="lazy"
+          width={350}
+          height={250}
+        />
       </div>
-    </div>
-    
+      <div className="shp-content">
+        <h3 className="shp-product-title">{title}</h3>
+        <p className="shp-product-desc">{description}</p>
+        <ul className="shp-feature-list">
+          {features.map((feature, i) => (
+            <li key={i} className="shp-feature-item">
+              <span className="shp-feature-icon">✓</span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
   );
 };
 
-export default Products;
+export default SmartHomeProducts;

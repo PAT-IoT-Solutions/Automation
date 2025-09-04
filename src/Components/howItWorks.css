@@ -1,74 +1,171 @@
-.how_it_works_section {
-  padding: 60px 20px;
-  background-color: #ffffff;
-  text-align: center;
+/* ===== Root Variables ===== */
+:root {
+  --sws-bg: #f9fafb;
+  --sws-card-bg: #ffffff;
+  --sws-text-dark: #111827;
+  --sws-text-light: #6b7280;
+  --sws-border: #e5e7eb;
+  --sws-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --sws-transition: all 0.25s ease-out;
 }
 
-.section_title {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 40px;
-  font-family: Arial, sans-serif;
-  word-wrap: break-word;
+/* ===== Container Styles ===== */
+.sws-container {
+  padding: 5rem 0;
+  background-color: var(--sws-bg);
 }
 
-.container {
+.sws-inner {
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
-  box-sizing: border-box;
 }
 
-.tiles_row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 20px;
-  margin: 0 -10px;
-}
-
-.tile {
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
-  width: 100%;
-  padding: 20px;
+/* ===== Header Styles ===== */
+.sws-header {
   text-align: center;
-  -webkit-transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 3.5rem;
 }
 
-.tile:hover {
-  -webkit-transform: translateY(-5px);
+.sws-mainHeading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--sws-text-dark);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.sws-mainHeading span {
+  color: var(--step-accent, #2563eb);
+}
+
+.sws-subHeading {
+  font-size: 1.125rem;
+  color: var(--sws-text-light);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== Steps Grid ===== */
+.sws-stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.sws-stepCard {
+  background: var(--sws-card-bg);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: var(--sws-shadow);
+  transition: var(--sws-transition);
+  position: relative;
+  overflow: hidden;
+  border-top: 3px solid var(--step-accent);
+  text-align: center;
+}
+
+.sws-stepCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.tile_image {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 15px;
+.sws-stepIndex {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgba(var(--step-accent), 0.1);
 }
 
-.tile_description {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.5;
+.sws-stepIconWrapper {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.25rem;
+  background: rgba(var(--step-accent), 0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (max-width: 480px) {
-  .section_title {
-    font-size: 1.8rem;
+.sws-stepVisual {
+  font-size: 1.5rem;
+  color: var(--step-accent);
+}
+
+.sws-stepImageFrame {
+  margin: 1.5rem 0;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sws-stepImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.sws-stepContent {
+  margin-top: 1rem;
+}
+
+.sws-stepTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--sws-text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.sws-stepDesc {
+  color: var(--sws-text-light);
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+/* ===== Progress Connector (Desktop) ===== */
+@media (min-width: 992px) {
+  .sws-stepsGrid {
+    position: relative;
   }
 
-  .tile_description {
-    font-size: 0.9rem;
+  .sws-stepsGrid::before {
+    content: "";
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      rgba(79, 70, 229, 0.2) 0%,
+      rgba(16, 185, 129, 0.2) 50%,
+      rgba(236, 72, 153, 0.2) 100%
+    );
   }
 
-  .tile {
-    padding: 10px;
+  .sws-stepCard {
+    z-index: 1;
+  }
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 768px) {
+  .sws-container {
+    padding: 3.5rem 0;
+  }
+
+  .sws-mainHeading {
+    font-size: 2rem;
+  }
+
+  .sws-stepsGrid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
   }
 }
